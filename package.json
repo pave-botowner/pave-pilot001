@@ -1,0 +1,11 @@
+{
+  "name": "pave-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.0",
+    "pino": "^8.0.0",
+    "qrcode": "^1.5.3"
+  }
+}
