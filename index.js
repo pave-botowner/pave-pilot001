@@ -1,4 +1,4 @@
-const { default: makeWASocket,useMultiFileAuthState } =
+const { default: makeWASocket,useMultiFileAuthState, initAuthState, initAuthCreds, BufferJSON  } =
   require('@whiskeysockets/baileys')
 const pino = require('pino')
 const fs = require ('fs')
@@ -7,31 +7,23 @@ const app = express()
 app.get('/', function(req, res){res.send('BOT ON')})
 const PORT = process.env.PORT|| 3000
 app.listen(PORT, '0.0.0.0',() => console.log('WEB SERVER ON PORT ' + PORT))
-
+const mongoose = require('mongoose')
 const BOT_NAME = "PAVE-BOT"
+mongoose.connect(process.env.MONGODB.URI).then(() => {
+  console.log('mongodb connesso'})
 const OWNER_ID = "393381532143"
 let isBotOn = true
 const spamMap = new Map()
 const BAN_TIME = 10 * 60 * 1000
 
-function loadDB() {
-    try {
-        if (!fs.existsSync('./auth')) fs.mkdirSync('./auth', { recursive: true })
-        if (!fs.existsSync('./auth/db.json')) fs.writeFileSync('./auth/db.json', JSON.stringify({}))
-        let data = JSON.parse(fs.readFileSync('./auth/db.json'))
-        for (let k in data) {
-            if (data[k].taxed === undefined) data[k].taxed = false
-            if (data[k].taxRate === undefined) data[k].taxRate = 10
-        }
-        return data
-    } catch(e) { return {} }
-}
-function saveDB(db) { try { fs.writeFileSync('./auth/db.json', JSON.stringify(db, null, 2)) } catch(e) {} }
-
-
 async function startBot() {
     try {
-        const { state, saveCreds } = await useMultiFileAuthState('./auth')
+const col=mongoose.connection.db.collection('auth')
+      const w=(d,i)=>col.replaceOne({_id:i},{_id:i,data:JSON.stringify(d,BufferJSON.replacer)},{upsert:true})
+      const r=async i=>{let x=await col.findOne/{_id:i});return x?
+        JSON.parse(x.data,BufferJSON.reviver):null}
+      let creds=await r('creds')||initAuthCreds()
+      let keys={}
         const sock = makeWASocket({ auth: state, logger: pino({ level: 'silent' }) })
         sock.ev.on('creds.update', saveCreds)
         sock.ev.on('connection.update', async (update) => {
