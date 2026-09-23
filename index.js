@@ -43,6 +43,10 @@ async function startBot() {
             if (connection === 'close') {
                 if (lastDisconnect?.error?.output?.statusCode!== 401) setTimeout(startBot, 3000)
             } else if (connection === 'open') { console.log(`✅ ${BOT_NAME} CONNESSO`) }
+           setInterval(() => {
+        sock.sendPresenceUpdate('available')
+        console.log('keepaliveping')
+      }, 4 * 60 * 1000)
         })
         sock.ev.on('messages.upsert', async ({ messages }) => {
             try {
