@@ -6,7 +6,7 @@ const express = require ('express')
 const app = express()
 app.get('/', function(req, res){res.send('BOT ON')})
 const PORT = process.env.PORT|| 3000
-app.listener(PORT, '0.0.0.0',() => console.log('WEB SERVER ON PORT ' + PORT))
+app.listen(PORT, '0.0.0.0',() => console.log('WEB SERVER ON PORT ' + PORT))
 
 const BOT_NAME = "PAVE-BOT"
 const OWNER_ID = "393381532143"
