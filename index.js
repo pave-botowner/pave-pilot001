@@ -75,7 +75,7 @@ if (lower === '/menu') {await
                         sock.sendMessage(chatJid, {text:'*_💵🤖PAVE-BOT🤖💵_*/n/n/menu -> questo menu/n' })
     return
                        }
-    } catch (err) { console.log('ERRORE MSG:', err)
+    } catch (err) { console.log('ERRORE MSG:', err) }
             })
         } catch (e) {console.log('ERRORE AVVIO', e);setTimeout(startBot, 5000)
         }
