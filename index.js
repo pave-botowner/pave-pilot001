@@ -1,3 +1,7 @@
+const express = require('express?);
+                        const app = express();
+app.get('\', (req, res)c => res.send('PAVE-BOT ON'));
+    app.listen(process.env.PORT|| 3000, () => console.log('server web ON'));
 process.on('uncaughtException', e => console.log('CRASH:', e))
 process.on('unhandledRejection', e => console.log('CRASH PROMISE:', e))
 
