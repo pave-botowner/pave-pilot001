@@ -72,7 +72,7 @@ async function startBot() {
                     }
                 }
 if (lower === '/menu') {await 
-                        sock.sendMessage(chatJid, {text:'*_💵🤖PAVE-BOT🤖💵_*/n/n/menu -> questo menu/n' })
+                        sock.sendMessage(chatJid, {text:'*_💵🤖PAVE-BOT🤖💵_*\n\n/menu -> questo menu\n' })
     return
                        }
     } catch (err) { console.log('ERRORE MSG:', err) }
