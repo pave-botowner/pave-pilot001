@@ -10,7 +10,7 @@ app.listen(PORT, '0.0.0.0',() => console.log('WEB SERVER ON PORT ' + PORT))
 const mongoose = require('mongoose')
 const BOT_NAME = "PAVE-BOT"
 mongoose.connect(process.env.MONGODB.URI).then(() => {
-  console.log('mongodb connesso')}
+  console.log('mongodb connesso')
 const OWNER_ID = "393381532143"
 let isBotOn = true
 const spamMap = new Map()
