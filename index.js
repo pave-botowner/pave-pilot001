@@ -26,7 +26,7 @@ const col=mongoose.connection.db.collection('auth')
       let keys={}
       const saveCreds=async()=>{await w(creds, 'creds')}
       const state={creds, keys:{get:async(t, ids)=>{let o={};for(let i of ids){let k= '${t}-${i}';
-     if(keys[k]) o[i]=keys[k];else{let d=await r(k),if(d) {keys[k]=d;o[i]=d}}}return o},set:async(d)=>{for(let c in d) 
+     if(keys[k]) o[i]=keys[k];else{let d=await r(k);if(d) {keys[k]=d;o[i]=d}}}return o},set:async(d)=>{for(let c in d) 
       {for(let i in d[c]) {let k= '${c}-${i}';keys[k]=d[c][i];await w (d[c][i],k)}}
                                                                                                                                                 saveCreds()}}}
         const sock = makeWASocket({ auth: state, logger: pino({ level: 'silent' }) })
