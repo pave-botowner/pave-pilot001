@@ -78,4 +78,5 @@ if (lower === '/menu') {await
         } catch (e) {console.log('ERRORE AVVIO', e);setTimeout(startBot, 5000)
         }
 }
+}
 startBot()
