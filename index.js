@@ -20,7 +20,7 @@ async function startBot() {
     try {
 const col=mongoose.connection.db.collection('auth')
       const w=(d,i)=>col.replaceOne({_id:i},{_id:i,data:JSON.stringify(d,BufferJSON.replacer)},{upsert:true})
-      const r=async i=>{let x=await col.findOne/{_id:i});return x?
+      const r=async i=>{let x=await col.findOne({_id:i});return x?
         JSON.parse(x.data,BufferJSON.reviver):null}
       let creds=await r('creds')||initAuthCreds()
       let keys={}
