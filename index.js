@@ -24,6 +24,11 @@ const col=mongoose.connection.db.collection('auth')
         JSON.parse(x.data,BufferJSON.reviver):null}
       let creds=await r('creds')||initAuthCreds()
       let keys={}
+      const saveCreds=async()=>{await w(creds, 'creds')}
+      const state{creds, keys:{get.async(t, ids)=>{let o={};for(let i of ids){let k= '${t}-${i}';if(keys[k])
+        o[i]=d}}}return o},set:async(d)=>{for(let c in d) 
+      {for(let i in d[c]) {let k= '${c}-${i}';keys[k]=d[c][i];await w (d[c][i],k)}}
+                                                                                                                                                saveCreds()}}}
         const sock = makeWASocket({ auth: state, logger: pino({ level: 'silent' }) })
         sock.ev.on('creds.update', saveCreds)
         sock.ev.on('connection.update', async (update) => {
